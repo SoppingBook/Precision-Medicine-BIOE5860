@@ -1,0 +1,105 @@
+#Top Procedure Features in Model
+PROC_3891_at_dx
+PROC_3952_at_dx
+PROC_9904_at_dx
+PROC_8968_at_dx
+PROC_8962_at_dx
+PROC_9390_at_dx
+PROC_3971_at_dx
+PROC_3733_at_dx
+PROC_3734_at_dx
+PROC_3722_at_dx
+PROC_3723_at_dx
+PROC_8856_at_dx
+PROC_8857_at_dx
+PROC_8841_at_dx
+PROC_0045_at_dx
+PROC_0046_at_dx
+PROC_3615_at_dx
+PROC_3616_at_dx
+PROC_3617_at_dx
+PROC_3619_at_dx
+PROC_8852_at_dx
+PROC_8853_at_dx
+PROC_8854_at_dx
+PROC_8855_at_dx
+PROC_3961_at_dx
+PROC_3962_at_dx
+PROC_3963_at_dx
+PROC_3964_at_dx
+PROC_3973_at_dx
+PROC_3974_at_dx
+PROC_3975_at_dx
+PROC_3976_at_dx
+PROC_3977_at_dx
+PROC_3978_at_dx
+PROC_3979_at_dx
+PROC_3893_at_dx
+PROC_3894_at_dx
+PROC_3895_at_dx
+PROC_3896_at_dx
+PROC_3897_at_dx
+PROC_3898_at_dx
+PROC_3899_at_dx
+PROC_9905_at_dx
+PROC_9906_at_dx
+PROC_9907_at_dx
+PROC_9908_at_dx
+PROC_9909_at_dx
+PROC_9910_at_dx
+PROC_9911_at_dx
+PROC_9912_at_dx
+
+# english 
+| ICD-9 |                           |
+| ----- | ---------------------------------- |
+| 38.91 | Arterial catheterization           |
+| 39.52 | Repair of blood vessel             |
+| 99.04 | Blood transfusion                  |
+| 89.68 | Cardiac monitoring                 |
+| 89.62 | Blood pressure monitoring          |
+| 93.90 | Physical therapy                   |
+| 39.71 | Endovascular implantation of graft |
+| 37.33 | Excision of heart lesion           |
+| 37.34 | Repair of heart                    |
+| 37.22 | Cardiac catheterization            |
+| 88.56 | Coronary arteriography             |
+| 88.57 | Aortography                        |
+| 00.45 | Percutaneous vascular intervention |
+| 00.46 | Peripheral vascular angioplasty    |
+| 36.15 | Single coronary bypass             |
+| 36.16 | Double coronary bypass             |
+| 36.17 | Triple coronary bypass             |
+| 36.19 | Other coronary bypass              |
+| 88.52 | Cardiac ultrasound                 |
+| 88.53 | Echocardiography                   |
+| 88.54 | Cardiac imaging                    |
+| 88.55 | Other cardiac diagnostic imaging   |
+| 39.61 | Cardiopulmonary bypass             |
+| 39.62 | Extracorporeal circulation         |
+| 39.63 | Assisted circulation               |
+| 39.64 | Circulatory support                |
+| 39.73 | Endovascular repair of vessel      |
+| 39.74 | Endovascular graft placement       |
+| 39.75 | Aortic stent placement             |
+| 39.76 | Vascular stenting                  |
+| 39.77 | Endovascular intervention          |
+| 39.78 | Repair of aneurysm                 |
+| 39.79 | Other vascular repair              |
+| 38.93 | Venous catheterization             |
+| 38.94 | Central venous catheter            |
+| 38.95 | Hemodynamic monitoring             |
+| 38.96 | Arterial monitoring                |
+| 38.97 | Vascular access                    |
+| 38.98 | Line placement                     |
+| 38.99 | Other vascular procedures          |
+| 99.05 | Platelet transfusion               |
+| 99.06 | Plasma transfusion                 |
+| 99.07 | Blood component transfusion        |
+| 99.08 | Volume expansion                   |
+| 99.09 | Other transfusion                  |
+| 99.10 | Injection/infusion therapy         |
+| 99.11 | Therapeutic infusion               |
+| 99.12 | Medication infusion                |
+| 37.23 | Cardiac pressure measurement       |
+| 37.21 | Right heart catheterization        |
