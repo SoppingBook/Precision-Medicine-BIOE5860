@@ -19,3 +19,6 @@ Lasso_Feature_Importances.csv
 01Mar_AD_Lasso_Feature_Importances.csv
 liblinear_Lasso_Feature_Importances.csv
 saga_Lasso_Feature_Importances.csv
+RF_Tuned_Top50_Features.png
+RF_Tuned_ROC.png
+RF_Tuned_Feature_Importances.csv
