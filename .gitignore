@@ -26,6 +26,7 @@ MODEL_READY_MATRIX_BALANCED.parquet
 Train_Models_Assignment2.html
 Balanced_Pre_Processing_Assignment2.html
 control_selection_comparison.csv
+control_selection_summary.csv
 lasso_importance_seed42.csv
 rf_tuned_importance_seed42.csv
 lasso_importance_seed69.csv
