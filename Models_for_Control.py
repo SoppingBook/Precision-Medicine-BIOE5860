@@ -19,9 +19,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def LR(df):
-    print(f"Loaded matrix: {df.shape}")
-    print(f"  Label=1 (AD): {(df['LABEL']==1).sum()}")
-    print(f"  Label=0 (Control): {(df['LABEL']==0).sum()}")
+    #print(f"Loaded matrix: {df.shape}")
+    #print(f"  Label=1 (AD): {(df['LABEL']==1).sum()}")
+    #print(f"  Label=0 (Control): {(df['LABEL']==0).sum()}")
 
     # Separate features and target
     feature_cols = [c for c in df.columns if c not in ['SUBJECT_ID', 'LABEL']]
@@ -33,7 +33,7 @@ def LR(df):
     X_sparse = csr_matrix(X.values)
 
 
-    print(f"Features: {X.shape[1]}")
+    #print(f"Features: {X.shape[1]}")
 
 
     N_FOLDS = 5
@@ -47,8 +47,8 @@ def LR(df):
         'roc_auc': 'roc_auc',
     }
 
-    print(f"Cross-validation: {N_FOLDS}-fold stratified")
-    print(f"Positive class prevalence: {y.mean():.4f}")
+    #print(f"Cross-validation: {N_FOLDS}-fold stratified")
+    #print(f"Positive class prevalence: {y.mean():.4f}")
 
     
     # Lasso needs scaled features for proper regularization
@@ -76,7 +76,7 @@ def LR(df):
         random_state=42,
     )
 
-    print("Training Lasso (L1 Logistic Regression) with cross-validation...")
+    #print("Training Lasso (L1 Logistic Regression) with cross-validation...")
     lasso_cv = cross_validate(
         lasso, X_scaled, y,
         cv=skf,
@@ -85,10 +85,10 @@ def LR(df):
         n_jobs=1 # changing to 1 to help with memory issues on large datasets
     )
 
-    print("\nLasso Results (mean +/- std across folds):")
+    #print("\nLasso Results (mean +/- std across folds):")
     for metric in scoring:
         scores = lasso_cv[f'test_{metric}']
-        print(f"  {metric}: {scores.mean():.4f} +/- {scores.std():.4f}")
+        #print(f"  {metric}: {scores.mean():.4f} +/- {scores.std():.4f}")
 
     # Average absolute coefficients across folds
     lasso_coefs = np.mean(
@@ -101,14 +101,14 @@ def LR(df):
         'importance': lasso_coefs
     }).sort_values('importance', ascending=False)
 
-    print(f"\nNon-zero coefficient features: {(lasso_coefs > 0).sum()}")
+    #print(f"\nNon-zero coefficient features: {(lasso_coefs > 0).sum()}")
 
     return lasso_cv, lasso_importance_df
 
 def RF(df):
-    print(f"Loaded matrix: {df.shape}")
-    print(f"  Label=1 (AD): {(df['LABEL']==1).sum()}")
-    print(f"  Label=0 (Control): {(df['LABEL']==0).sum()}")
+    #print(f"Loaded matrix: {df.shape}")
+    #print(f"  Label=1 (AD): {(df['LABEL']==1).sum()}")
+    #print(f"  Label=0 (Control): {(df['LABEL']==0).sum()}")
 
     # Separate features and target
     feature_cols = [c for c in df.columns if c not in ['SUBJECT_ID', 'LABEL']]
@@ -120,7 +120,7 @@ def RF(df):
     X_sparse = csr_matrix(X.values)
 
 
-    print(f"Features: {X.shape[1]}")
+    #print(f"Features: {X.shape[1]}")
 
 
     N_FOLDS = 5
@@ -134,8 +134,8 @@ def RF(df):
         'roc_auc': 'roc_auc',
     }
 
-    print(f"Cross-validation: {N_FOLDS}-fold stratified")
-    print(f"Positive class prevalence: {y.mean():.4f}")
+    #print(f"Cross-validation: {N_FOLDS}-fold stratified")
+    #print(f"Positive class prevalence: {y.mean():.4f}")
 
     ''' Add Random Forest'''
     # setup random forest classifier with hyperparameters that are reasonable for this dataset #this is first pass
@@ -152,7 +152,7 @@ def RF(df):
         n_jobs=-1,
     )
 
-    print("\n[1/3] Training Random Forest (baseline) with cross-validation...")
+    #print("\n[1/3] Training Random Forest (baseline) with cross-validation...")
     rf_cv = cross_validate(
         rf_base, X_sparse, y,
         cv=skf,
@@ -161,14 +161,14 @@ def RF(df):
         n_jobs=1  # outer loop sequential to avoid mem issues w/ nested parallelism
     )
 
-    print("\nRandom Forest Baseline Results (mean ± std across folds):")
+    #print("\nRandom Forest Baseline Results (mean ± std across folds):")
     for metric in scoring:
         scores = rf_cv[f'test_{metric}']
-        print(f"  {metric}: {scores.mean():.4f} ± {scores.std():.4f}")
+        #print(f"  {metric}: {scores.mean():.4f} ± {scores.std():.4f}")
 
 
     # now do hyperparameter tuning with RandomizedSearchCV
-    print("\n[2/3] Running RandomizedSearchCV for hyperparameter tuning...")
+    #print("\n[2/3] Running RandomizedSearchCV for hyperparameter tuning...")
 
     param_dist = {
         'n_estimators': randint(300, 2000),
@@ -193,12 +193,12 @@ def RF(df):
     )
     rf_search.fit(X_sparse, y)
 
-    print(f"\nBest {optimzation_metric} from search: {rf_search.best_score_:.4f}")
-    print(f"Best params: {rf_search.best_params_}")
+    #print(f"\nBest {optimzation_metric} from search: {rf_search.best_score_:.4f}")
+    #print(f"Best params: {rf_search.best_params_}")
 
 
     # cross val
-    print("\n[3/3] Evaluating tuned Random Forest with cross-validation...")
+    #print("\n[3/3] Evaluating tuned Random Forest with cross-validation...")
     rf_tuned = rf_search.best_estimator_
 
     rf_tuned_cv = cross_validate(
@@ -209,10 +209,10 @@ def RF(df):
         n_jobs=1
     )
 
-    print("\nTuned Random Forest Results (mean ± std across folds):")
+    #print("\nTuned Random Forest Results (mean ± std across folds):")
     for metric in scoring:
         scores = rf_tuned_cv[f'test_{metric}']
-        print(f"  {metric}: {scores.mean():.4f} ± {scores.std():.4f}")
+        #print(f"  {metric}: {scores.mean():.4f} ± {scores.std():.4f}")
 
 
 
