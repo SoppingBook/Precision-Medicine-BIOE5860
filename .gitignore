@@ -36,3 +36,6 @@ rf_tuned_importance_seed420.csv
 lasso_importance_seed80085.csv
 rf_tuned_importance_seed80085.csv
 RF_Tuned_SHAP.png
+convert_output.txt
+MODEL_READY_MATRIX_NAMED_LABS.parquet
+MODEL_READY_MATRIX_BALANCED_NAMED_LABS.parquet
