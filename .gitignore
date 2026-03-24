@@ -40,3 +40,7 @@ convert_output.txt
 MODEL_READY_MATRIX_NAMED_LABS.parquet
 MODEL_READY_MATRIX_BALANCED_NAMED_LABS.parquet
 icd-9-comparison-excel-file.csv
+rf_last_fold_estimator.pkl
+shap_feature_cols.npy
+shap_X_test.npz
+shap_y_test.npy
