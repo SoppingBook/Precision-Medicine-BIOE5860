@@ -44,3 +44,5 @@ rf_last_fold_estimator.pkl
 shap_feature_cols.npy
 shap_X_test.npz
 shap_y_test.npy
+RF_Tuned_SHAP_bar.png
+shap_values_class1.npy
