@@ -50,3 +50,4 @@ XGB_Feature_Importances.csv
 XBG_Top50_Features.png
 XGB_Top50_Features.png
 *.png
+*.html
