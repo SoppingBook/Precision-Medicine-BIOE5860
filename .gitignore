@@ -51,3 +51,7 @@ XBG_Top50_Features.png
 XGB_Top50_Features.png
 *.png
 *.html
+*.csv
+*.pkl
+*.npy
+*.npz
