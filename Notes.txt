@@ -1,1 +1,6 @@
-Final/Best Models as of May2026 Balanced_TRT_RandomOversample.ipynb
+For Labs Models
+
+Pipeline: Balanced_Pre_Processing -> convert_labs_fixed.py for getting the labs named -> Balanced_TRT_RandomOversample
+OR
+Balanced_Pre_Processing -> convert_labs_fixed.py for getting the labs named -> Feature_Selection_Retrain.ipynb -> Feature_Selection_Retrain_Shap.ipynb
+Next gotta add external validation 
