@@ -2,6 +2,37 @@
 
 The study asks whether routine laboratory measurements available early in a hospital admission distinguish admissions with coded endocarditis. Models are developed in MIMIC-III and evaluated in eICU-CRD. The broad laboratory cohort allows optional prior history. Diagnosis-history analyses use a separate subgroup with usable prior ICD codes.
 
+## What I built
+
+I’m Daniel Menzin. For this collaborative study I built the v18 analysis pipeline, from aligning lab and diagnosis records across the two databases to generating patient-grouped MIMIC folds and evaluating transferred scores in eICU. I also built the timing audit that checks whether a qualifying diagnosis code had already been entered when the score was calculated. [v18 contribution on GitHub](https://github.com/SoppingBook/Precision-Medicine-BIOE5860/commit/e7295f2f21595a24755cf6b83ac249b4a9fd05f3)
+
+The selected XGBoost model achieved eICU AUROC of **0.756 initially and 0.775 at repeat assessment**. At the transferred thresholds, PPV was **1.02% and 0.64%**, respectively. Excluding cases already coded by scoring left AUROC at 0.746 and 0.771, while average precision fell. The timing audit uses diagnosis-entry timestamps, so it cannot establish whether the model would alert before clinical workup. [Aggregate results](eicu_later_coded_expected.json)
+
+## Start here
+
+1. [Run the synthetic demo](#run-the-synthetic-demo) to check lab cutoffs and patient-level splitting without credentialed data.
+2. [Follow the notebook map](#notebook-map) to trace one admission from cohort assembly to evaluation.
+3. [Read the eICU timing script](eicu_later_coded_sensitivity.py) for a standalone example of how we checked a potential source of bias after fitting.
+
+## Run the synthetic demo
+
+From the repository root, install the three demo dependencies and run the script.
+
+```sh
+python -m pip install numpy pandas scikit-learn
+python analysis/v18/demo.py
+```
+
+The demo calls the notebook’s feature builder and split functions on synthetic records. It checks that a result available exactly at scoring can enter the first assessment, while results reported late or collected at the end of the collection window are withheld from both tabular and sequence inputs until the repeat assessment. It also checks that repeated admissions stay together in every outer fold and inner holdout. It runs without hospital files or model training. The demo was tested with the study’s Python 3.14.4 environment.
+
+## Notebook map
+
+Cell numbers are one-based and include Markdown cells in the [v18 notebook](BE_ICD_LABS_v18.ipynb).
+
+- **Cohort and timing (cells 5–11 and 20).** Start with `load_admissions`, `draw_landmarks`, and the ICD crosswalk. `_build_features_batch` applies the collection and availability cutoffs to both lab summaries and sequence inputs.
+- **Folds and fitting (cells 13, 25, and 35–37).** The patient splitter builds the outer assignments and `inner_split` creates the training-only holdouts. Cell 35 configures the active tabular model schedule and defines `fit_grid_partition`. Cell 37 installs study ownership, guarded checkpoint handling, and the final Stack threshold logic. Earlier cells also define fitting functions, so read the definitions in execution order.
+- **Evaluation (cells 41, 43, 45, 47–48, and 50).** Run the tabular grid, inspect paired landmark and lab-only comparisons, then follow the separate CNN and sensitivity runs. For the manuscript’s later-coded sensitivity, use [the standalone script](eicu_later_coded_sensitivity.py).
+
 ## How this relates to the earlier work
 
 - **Cohort and outcome.** The [April ICD notebook](../../Daniel_BE_ICD_Model.ipynb) built a MIMIC cohort around ICD-9 421.0 and sampled controls by admission-history counts. V18 evaluates eligible admissions at their actual index hospitalizations and uses ICD-9 421.0, 421.1 and 421.9, with I33-family codes also accepted in eICU. The endpoint is coded endocarditis.
