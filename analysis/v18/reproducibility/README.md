@@ -2,6 +2,20 @@
 
 [Back to the manuscript analysis](../README.md)
 
+## Study workflow
+
+```mermaid
+flowchart LR
+    M["MIMIC-III cohort and timed features"] --> F["Patient-grouped fitting and thresholds"]
+    E["eICU-CRD cohort and timed features"] --> X["Apply the MIMIC model and thresholds in eICU"]
+    F --> X
+    X --> R["Discrimination, calibration, alert burden, and timing checks"]
+```
+
+The first assessment follows a qualifying one-hour collection window beginning within 24 hours of admission. The repeat window begins at least six hours after the first begins and within 48 hours of admission. The primary analysis assumes a four-hour reporting lag. The broad cohort allows optional prior history. Experiments with historical ICD predictors use a separate eligible subgroup.
+
+Model selection for the reported XGBoost comparison and its thresholds used MIMIC. eICU informed design checks during development, and the separate prevalence-matched arm uses the observed eICU case fraction. The reported results therefore describe cross-database performance under this study design.
+
 ## Run the study notebook
 
 1. Obtain credentialed access to [MIMIC-III](https://physionet.org/content/mimiciii/) and [eICU-CRD](https://physionet.org/content/eicu-crd/). Store extracts outside the Git working tree. The exact analyzed database releases remain pending confirmation.
@@ -10,6 +24,14 @@
 4. Open [the v18 notebook](../BE_ICD_LABS_v18.ipynb) and run it in order. It builds features and fits models from local source data in `BE_integrated_grid_v18_public_rebuild_outputs` under the data root.
 
 A full run includes the tabular grid, CNN comparisons, and reporting-lag, age, and lab-panel sensitivities. Credentialed extracts, per-admission predictions, feature banks, and model checkpoints are held locally.
+
+From the repository root, the dependency install command is:
+
+```sh
+python -m pip install -r analysis/v18/reproducibility/requirements-reference.txt
+```
+
+The run directory contains `primary/feature_sampling_grid.csv` for tabular comparisons, `cnn_primary/cnn_comparison_results.csv` for CNNs, and `all_scenario_grid.csv` for the combined study grid. The [synthetic demo](../README.md#run-the-synthetic-demo) checks the timing and fold rules without these inputs or outputs.
 
 ## Notebook map
 
@@ -24,9 +46,17 @@ Cell numbers include Markdown cells.
 - **[Later-coded eICU analysis](eicu_later_coded_sensitivity.py).** Supply `--data-root` and `--run-dir`. The script reads the run manifest, saved prediction vectors, and score times. Use `--feature-bank` to select an alternate bank. [Expected aggregate results](eicu_later_coded_expected.json) include the case counts, metrics, and patient-cluster intervals from the manuscript run.
 - **[ICD category coverage](coverage/compute_evidence.py) and [selected-feature coverage](coverage/selected_portability.py).** Set `BE_DATA_ROOT`. For a different run or bank, set `BE_RUN_DIR` and `BE_FEATURE_BANK` to the corresponding local paths.
 
+Example from the repository root, with paths set to the local extracts and saved run:
+
+```sh
+python analysis/v18/reproducibility/eicu_later_coded_sensitivity.py --data-root "<data-root>" --run-dir "<run-dir>" --output later_coded_results.json
+```
+
+The timing script leaves scores and thresholds fixed. It writes only aggregate results and compares the full eICU cohort with the subset eligible for the later-coded analysis.
+
 ## Manuscript run provenance
 
-The manuscript’s primary and CNN results used audited recovery of saved stages. The [provenance record](provenance/analysis_provenance.json) lists source checksums and recovery details. The [v15 modeling notebook](provenance/v15_model_source.ipynb) documents the earlier modeling recipe, and the [12-hour execution cells](provenance/fast12h_execution_cells.ipynb) document the cache-backed execution used for that sensitivity. Those cells depend on the original local checkpoints. The public v18 notebook uses the standard feature builder for a fresh run. Exact reproduction from a fresh build has not been established for the full recovered feature bank.
+The manuscript links to a [fixed snapshot of the study code](https://github.com/SoppingBook/Precision-Medicine-BIOE5860/tree/d27bff91daf170ec56bc23a45cf56434d284b94b/analysis/v18). Its primary and CNN results used audited recovery of saved stages. The [provenance record](provenance/analysis_provenance.json) lists source checksums and recovery details. The [v15 modeling notebook](provenance/v15_model_source.ipynb) documents the earlier modeling recipe, and the [12-hour execution cells](provenance/fast12h_execution_cells.ipynb) document the cache-backed execution used for that sensitivity. Those cells depend on the original local checkpoints. The public v18 notebook uses the standard feature builder for a fresh run. Exact reproduction from a fresh build has not been established for the full recovered feature bank.
 
 ## Relationship to the course project
 
