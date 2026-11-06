@@ -1,0 +1,77 @@
+{
+ "notebooks": {
+  "BE_ICD_LABS_v15_FOCUSED_FULL_METRICS.ipynb": {
+   "role": "Source notebook for the V15 run that supplied recovered fits.",
+   "original_file_sha256": "5f8249bb8ddffe499d12320373cf82ef636fee734872ee1c63e95e45dadb636e",
+   "exported_file_sha256": "4931365beeb99a5720c629cda420e9a76674581ea2c929280a3449994a58eff3",
+   "cell_sources_sha256": "55009a11c9f05426af99bcffbf60bc678082f0e36f68f3d7a3b2c5a1a9112da6",
+   "code_cells": 29
+  },
+  "BE_ICD_LABS_v18_GUARDED_REUSE_FIXED.ipynb": {
+   "role": "Executed notebook for guarded recovery and evaluation.",
+   "original_file_sha256": "9ad94ed1a0c4573555f7e172bcca86740b0ffb551ac5b9393e2ec46d0d92e96c",
+   "exported_file_sha256": "fb139a83e5a6fefe283f70e0fc95cf955cc71187e28f28aace2c97ab39c526ba",
+   "cell_sources_sha256": "7159ba5403147f7ff618df7556da3d52c14e3e7fd1d0f1a4310b1a6b742920e1",
+   "code_cells": 30
+  },
+  "BE_ICD_LABS_v18_GUARDED_REUSE_FAST12H.ipynb": {
+   "role": "Same v18 source with the validated 12-hour execution delegate.",
+   "original_file_sha256": "90403070159e8b3e538c6715cd05390848c8da0ce187c6b1d901cfd607e8085d",
+   "exported_file_sha256": "b2d7506ec8f4ebe207ce14b6c21dc0890a56518830c428b222a7bdb4a264f19f",
+   "cell_sources_sha256": "15c46287e82337f76cf5d16594d70ddef6fccc20172b1fec9409a626d0fff72e",
+   "code_cells": 31
+  }
+ },
+ "execution_python": "3.14.4",
+ "recorded_packages": {
+  "icdmappings": "not installed",
+  "imbalanced-learn": "0.14.1",
+  "numpy": "2.4.4",
+  "openpyxl": "3.1.5",
+  "pandas": "3.0.2",
+  "scikit-learn": "1.8.0",
+  "scipy": "1.17.1",
+  "torch": "2.13.0",
+  "xgboost": "3.2.0"
+ },
+ "database_release_identifiers": null,
+ "cms_version_32_diagnosis_dictionary_sha256": "e79455f7860e506e69df66e16bf0268d4a5a299bf5ef294ed0de628910c7c06e",
+ "mapper_replay": {
+  "replay_version": "0.6.2",
+  "lookup_file_sha256": "59e4027fa087e9ca9113a00fa70314ecabd3b4f66fbf99ea225c6c07e30420ec",
+  "token_decisions_exact": 1691,
+  "token_decisions_total": 1691,
+  "original_version_verified": false
+ },
+ "primary_and_cnn_recovery": {
+  "policy": "Audited frozen-source recovery; not an independent full-source rerun",
+  "tabular_source": "BE_integrated_grid_v15_outputs/primary/grid_checkpoints/dbd28d4f8224463bd9168b96",
+  "cnn_source": "BE_integrated_grid_v15_outputs/cnn_primary/cnn_checkpoints/ae3c6e24469fb067616f5bea",
+  "catalog_sha256": "a80e0424c5eee1024617507b2e5b5f840149b4d2c6074da8bf83f1ccd97dc3cb",
+  "tabular_estimator_stages_reused": 3456,
+  "cnn_stages_reused": 72,
+  "stack_repair": {
+   "configurations": 4,
+   "thresholds_changed": 24,
+   "max_probability_difference": 0.0
+  },
+  "full_original_input_fingerprints_reconstructed": false,
+  "evidence": "Structural review, complete saved-population/fold audit, stage health checks, 18 prediction replays, and exact raw-source feature replay on 38 patients / 106 landmark rows"
+ },
+ "lag_12h": {
+  "implementation": "cutoff-aware observed-analyte execution",
+  "scientific_feature_fingerprint": "6dd9f1a5f1c478d154057885b4226ebeae4f3db539699227794937312da4170a",
+  "execution_fingerprint": "6b2935d03d74ad4134a38455",
+  "status": "complete_with_failures"
+ },
+ "repository_copy": {
+  "entry_point": "BE_ICD_LABS_v18.ipynb",
+  "entry_point_sha256": "236da94958ca0f117f1e3a4f2cee063363936facdb163352f2c7b8ee18fb6fdd",
+  "adaptations": [
+   "Select the local credentialed input directory via BE_DATA_ROOT.",
+   "Use a new output name and rebuild from raw data by default.",
+   "Replace original workstation paths in source and recovery receipts.",
+   "Keep the cache-dependent Fast12H cells in provenance rather than in the fresh-build entry point."
+  ]
+ }
+}

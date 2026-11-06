@@ -1,0 +1,15 @@
+# Reference environment recorded in the study manifest. Python 3.14.4.
+imbalanced-learn==0.14.1
+numpy==2.4.4
+openpyxl==3.1.5
+pandas==3.0.2
+scikit-learn==1.8.0
+scipy==1.17.1
+torch==2.13.0
+xgboost==3.2.0
+# Mapper replay version. The original feature-bank mapper release is unverified.
+icd-mappings==0.6.2
+# Notebook/display dependencies outside the recorded pins.
+ipykernel
+matplotlib
+threadpoolctl
