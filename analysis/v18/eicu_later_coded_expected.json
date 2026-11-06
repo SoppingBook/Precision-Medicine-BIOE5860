@@ -1,0 +1,81 @@
+{
+  "bootstrap_draws": 500,
+  "results": [
+    {
+      "assessment": "initial",
+      "cases_with_valid_entry_time": 438,
+      "cases_coded_by_score_time": 140,
+      "cases_with_indeterminate_time": 1,
+      "full": {
+        "admissions": 148686,
+        "cases": 439,
+        "prevalence": 0.0029525308367970085,
+        "auroc": 0.7559226979943419,
+        "average_precision": 0.03988557552578172,
+        "average_precision_lift": 13.508944607349388,
+        "recall": 0.5170842824601367,
+        "specificity": 0.8511538176151963,
+        "ppv": 0.010182568519266137,
+        "alert_fraction": 0.1499334167305597
+      },
+      "later_coded": {
+        "admissions": 148545,
+        "cases": 298,
+        "prevalence": 0.0020061260897371166,
+        "auroc": 0.7464087687322849,
+        "average_precision": 0.025178598973923896,
+        "auroc_ci_95": [
+          0.7142742068508905,
+          0.7749879316441182
+        ],
+        "average_precision_ci_95": [
+          0.013033252165146102,
+          0.04697215141907814
+        ],
+        "average_precision_lift": 12.55085565295814,
+        "recall": 0.5100671140939598,
+        "specificity": 0.8511538176151963,
+        "ppv": 0.006841299846970924,
+        "alert_fraction": 0.14957083712006464
+      }
+    },
+    {
+      "assessment": "repeat",
+      "cases_with_valid_entry_time": 412,
+      "cases_coded_by_score_time": 180,
+      "cases_with_indeterminate_time": 0,
+      "full": {
+        "admissions": 128076,
+        "cases": 412,
+        "prevalence": 0.0032168400012492584,
+        "auroc": 0.7754414709820804,
+        "average_precision": 0.0317780091654586,
+        "average_precision_lift": 9.878641509406009,
+        "recall": 0.75,
+        "specificity": 0.6261122947737812,
+        "ppv": 0.0064320059948793735,
+        "alert_fraction": 0.37509759830100875
+      },
+      "later_coded": {
+        "admissions": 127896,
+        "cases": 232,
+        "prevalence": 0.0018139738537561768,
+        "auroc": 0.7706830139514934,
+        "average_precision": 0.015812066703318008,
+        "auroc_ci_95": [
+          0.7388344194495636,
+          0.8036017840039181
+        ],
+        "average_precision_ci_95": [
+          0.010767852029001062,
+          0.025788043685763786
+        ],
+        "average_precision_lift": 8.71681070296362,
+        "recall": 0.7413793103448276,
+        "specificity": 0.6261122947737812,
+        "ppv": 0.003590514362057448,
+        "alert_fraction": 0.3745543253893789
+      }
+    }
+  ]
+}

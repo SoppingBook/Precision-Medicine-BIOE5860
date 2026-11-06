@@ -1,0 +1,16 @@
+# Credentialed inputs and generated study artifacts
+/data/
+/eicu/
+/BE_integrated_grid_v18_*/
+*.csv
+*.csv.gz
+*.xlsx
+*.parquet
+*.npz
+*.pkl
+*.pkl.gz
+*.pt
+*_raw_icd_history.json
+/coverage/verified_coverage.json
+.ipynb_checkpoints/
+__pycache__/
