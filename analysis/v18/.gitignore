@@ -11,6 +11,6 @@
 *.pkl.gz
 *.pt
 *_raw_icd_history.json
-/coverage/verified_coverage.json
+/reproducibility/coverage/verified_coverage.json
 .ipynb_checkpoints/
 __pycache__/
